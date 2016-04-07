@@ -58,5 +58,6 @@ RSpec.describe Boat, type: :model do
 
   context 'associations' do
     it { should belong_to(:user) }
+    it { should have_many(:goods).dependent(:destroy) }
   end
 end
