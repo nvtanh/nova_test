@@ -59,3 +59,4 @@ group :test do
 end
 
 gem 'devise'
+gem "paperclip", "~> 4.3" # File upload
