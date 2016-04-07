@@ -60,3 +60,4 @@ end
 
 gem 'devise'
 gem "paperclip", "~> 4.3" # File upload
+gem 'slim-rails'

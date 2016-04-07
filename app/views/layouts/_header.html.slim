@@ -1,0 +1,11 @@
+nav.navbar.navbar-default.navbar-static-top
+  .container
+    .navbar-header
+      = link_to "NovaTest", root_path, class: "navbar-brand"
+    #navbar.navbar-collapse.collapse
+      ul.nav.navbar-nav
+        li.active
+          = link_to "NovaTest", root_path
+      ul.nav.navbar-nav.navbar-right
+        li
+          = link_to "Sign out", destroy_user_session_path, method: :delete
