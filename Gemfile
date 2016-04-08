@@ -61,3 +61,5 @@ end
 gem 'devise'
 gem "paperclip", "~> 4.3" # File upload
 gem 'slim-rails'
+gem 'kaminari' # pagination
+gem 'config' # Easiest way to add multi-environment yaml settings

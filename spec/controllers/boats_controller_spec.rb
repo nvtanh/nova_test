@@ -8,10 +8,17 @@ RSpec.describe BoatsController, type: :controller do
   end
 
   describe "GET #index" do
+    before { get :index }
     it "returns http success" do
-      get :index
       expect(response).to be_success
     end
-  end
 
+    it "assigns @boats" do
+      boat = create(:boat, user: subject.current_user)
+      expect(assigns(:boats)).to eq([boat])
+    end
+
+    it { expect(response).to render_with_layout :application }
+    it { should render_template :index }
+  end
 end
