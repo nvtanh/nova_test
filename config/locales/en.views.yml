@@ -1,0 +1,9 @@
+en:
+  boats:
+    index:
+      title: "List boats"
+      new: "Create boat"
+      option_label: "Option"
+    boat:
+      edit: "Edit"
+      delete: "Delete"

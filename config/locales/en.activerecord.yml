@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      user: "User"
+      boat: "Boat"
+
+    attributes:
+      user:
+        email: "Email"
+        password: "Password"
+      boat:
+        name: "Name"
+        year: "Year"
+        image: "Image"
