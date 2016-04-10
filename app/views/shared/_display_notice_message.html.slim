@@ -1,0 +1,13 @@
+- if flash[:success].present?
+  .alert.alert-success.alert-dismissable
+    button.close aria-hidden="true" data-dismiss="alert" type="button"  ×
+    ul
+      li= flash[:success]
+
+- if flash[:errors].present?
+  .alert.alert-danger.alert-dismissable
+    button.close aria-hidden="true" data-dismiss="alert" type="button"  ×
+    ul
+      - flash[:errors].each do |msg|
+        li= msg
+

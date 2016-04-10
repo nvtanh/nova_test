@@ -7,3 +7,13 @@ en:
     boat:
       edit: "Edit"
       delete: "Delete"
+    modal_form:
+      title: "New boat"
+      submit: "Submit"
+      edit_title: "Edit boat"
+    create:
+      success: "Created successfully"
+    update:
+      success: "Updated successfully"
+    destroy:
+      success: "Destroyed successfully"
