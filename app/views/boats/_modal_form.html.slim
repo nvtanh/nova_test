@@ -1,0 +1,21 @@
+.modal.fade#jmodal-boat-form
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          span aria-hidden="true"  &times;
+        h4.modal-title= t(".title")
+      .modal-body
+        = form_for Boat.new, html: {id: "jboat-form"} do |f|
+          table.table.table-striped
+            tr
+              th= Boat.h :name
+              td= f.text_field :name, class: "form-control", id: "jboat-name"
+            tr
+              th= Boat.h :year
+              td= f.number_field :year, class: "form-control", id: "jboat-year"
+            tr
+              th= Boat.h :image
+              td= f.file_field :image, class: "form-control", id: "jboat-image"
+          .txt-align-right
+            = f.submit t(".submit"), class: "button btn btn-primary"

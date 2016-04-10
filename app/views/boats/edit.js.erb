@@ -1,0 +1,6 @@
+$(".modal-title").text("<%= I18n.t("boats.modal_form.edit_title") %>");
+$("#jboat-form").attr("action", "/boats/" + <%= @boat.id %>);
+$("#jboat-name").val("<%= @boat.name %>");
+$("#jboat-year").val("<%= @boat.year %>");
+$("#jboat-form").append('<input type="hidden" name="_method" value="PUT">');
+$("#jmodal-boat-form").modal("show");
