@@ -11,7 +11,7 @@ RSpec.describe "boats/index.html.slim", type: :view do
     controller.response.should be_success
   end
 
-  it "should not show a table" do
+  it "should show a table" do
     render
     rendered.should have_selector("table")
   end

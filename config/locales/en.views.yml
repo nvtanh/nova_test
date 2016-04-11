@@ -1,16 +1,41 @@
 en:
+  option_label: &option_label "Option"
+  submit: &submit "Submit"
+  cancle: &cancle "Cancle"
+  delete: &delete "Delete"
   boats:
     index:
       title: "List boats"
       new: "Create boat"
-      option_label: "Option"
+      option_label: *option_label
     boat:
       edit: "Edit"
-      delete: "Delete"
+      delete: *delete
     modal_form:
       title: "New boat"
       submit: "Submit"
       edit_title: "Edit boat"
+    create:
+      success: "Created successfully"
+    update:
+      success: "Updated successfully"
+    destroy:
+      success: "Destroyed successfully"
+    show:
+      title: "Detail boat with name: %{name}"
+      boat_heading: "Boat infor"
+      goods_heading: "List goods"
+      option_label: *option_label
+  goods:
+    good:
+      delete: *delete
+    form:
+      submit: *submit
+      cancle: *cancle
+    new:
+      title: "New a goods"
+    edit:
+      title: "Update good: %{name}"
     create:
       success: "Created successfully"
     update:

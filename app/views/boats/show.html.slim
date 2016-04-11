@@ -1,0 +1,41 @@
+.row
+  .col-lg-12
+    h1.page-header= t(".title", name: @boat.name)
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        = t ".boat_heading"
+      .panel-body
+        .table-responsive
+          table.table.table-striped
+            tr
+              th= Boat.h :name
+              td= @boat.name
+            tr
+              th= Boat.h :year
+              td= @boat.year
+            tr
+              th= Boat.h :image
+              td= image_tag @boat.image.url
+
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        = t ".goods_heading"
+        .pull-right
+          = link_to "new goods", new_boat_good_path(@boat), class: "btn btn-sm btn-primary"
+      .panel-body
+        .table-responsive
+          table.table
+            thead
+              tr
+                th
+                  = Good.h :name
+                th
+                  = Good.h :quantity
+                th
+                  = t ".option_label"
+            tbody
+              = render partial: "goods/good", collection: @goods
