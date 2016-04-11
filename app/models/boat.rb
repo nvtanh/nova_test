@@ -5,6 +5,8 @@ class Boat < ActiveRecord::Base
   has_many :goods, dependent: :destroy
 
   validates :name, :year, :user, :image, presence: true
+  validates :year, numericality: { only_integer: true ,
+    greater_than_or_equal_to: 0 }
   validates_attachment :image, content_type: { content_type: /\Aimage\/.*\Z/ }
 
   private

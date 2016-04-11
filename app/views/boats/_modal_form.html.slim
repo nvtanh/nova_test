@@ -10,12 +10,12 @@
           table.table.table-striped
             tr
               th= Boat.h :name
-              td= f.text_field :name, class: "form-control", id: "jboat-name"
+              td= f.text_field :name, class: "form-control", id: "jboat-name", required: true
             tr
               th= Boat.h :year
-              td= f.number_field :year, class: "form-control", id: "jboat-year"
+              td= f.number_field :year, min: 0, class: "form-control", id: "jboat-year", required: true
             tr
               th= Boat.h :image
-              td= f.file_field :image, class: "form-control", id: "jboat-image"
+              td= f.file_field :image, class: "form-control", id: "jboat-image", required: true
           .txt-align-right
             = f.submit t(".submit"), class: "button btn btn-primary"
