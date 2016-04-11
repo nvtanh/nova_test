@@ -45,6 +45,11 @@ RSpec.describe Good, type: :model do
     it "requires boat" do
       expect(@good).to validate_presence_of(:boat)
     end
+
+    it "requires quantity is integer, greater than or equal '0'" do
+      expect(@good).to validate_numericality_of(:quantity).only_integer
+        .is_greater_than_or_equal_to(0)
+    end
   end
 
   context 'associations' do

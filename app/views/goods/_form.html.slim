@@ -2,10 +2,10 @@
   table.table.table-striped
     tr
       th= Good.h :name
-      td= f.text_field :name, class: "form-control"
+      td= f.text_field :name, class: "form-control", required: true
     tr
       th= Good.h :quantity
-      td= f.number_field :quantity, class: "form-control"
+      td= f.number_field :quantity, min: 0, class: "form-control", required: true
   .txt-align-right
     = link_to t(".cancle"), boat_path(@boat), class: "btn btn-default mar-right-5"
     = f.submit t(".submit"), class: "button btn btn-primary"

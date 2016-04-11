@@ -54,6 +54,11 @@ RSpec.describe Boat, type: :model do
     it "requires content type of image" do
       should validate_attachment_content_type(:image).allowing("image/jpg")
     end
+
+    it "requires year is integer, greater than or equal '0'" do
+      expect(@boat).to validate_numericality_of(:year).only_integer
+        .is_greater_than_or_equal_to(0)
+    end
   end
 
   context 'associations' do
