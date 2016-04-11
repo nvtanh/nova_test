@@ -7,6 +7,10 @@ class BoatsController < ApplicationController
     @boats = current_user.boats.page(params[:page]).per(Settings.per_page.boat)
   end
 
+  def show
+    @goods = @boat.goods
+  end
+
   def create
     if @boat.save
       flash[:success] = I18n.t("boats.create.success")

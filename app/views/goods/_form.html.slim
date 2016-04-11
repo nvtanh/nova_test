@@ -1,0 +1,11 @@
+= form_for [@boat, @good] do |f|
+  table.table.table-striped
+    tr
+      th= Good.h :name
+      td= f.text_field :name, class: "form-control"
+    tr
+      th= Good.h :quantity
+      td= f.number_field :quantity, class: "form-control"
+  .txt-align-right
+    = link_to t(".cancle"), boat_path(@boat), class: "btn btn-default mar-right-5"
+    = f.submit t(".submit"), class: "button btn btn-primary"

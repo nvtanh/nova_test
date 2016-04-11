@@ -1,0 +1,7 @@
+tr
+  td= good.name
+  td= good.quantity
+  td
+    = link_to t(".edit"), edit_boat_good_path(@boat, good), class: "btn btn-primary mar-right-5"
+    = link_to t(".delete"), boat_good_path(@boat, good), method: :delete, class: "btn btn-danger",
+      data: {confirm: t("dictionary.question_destroy")}

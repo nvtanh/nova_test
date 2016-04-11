@@ -54,7 +54,7 @@ RSpec.describe BoatsController, type: :controller do
     end
   end
 
-  describe 'POST #update' do
+  describe 'PUT #update' do
     context 'with valid attributes' do
       before do
         @boat = create(:boat)
@@ -89,7 +89,7 @@ RSpec.describe BoatsController, type: :controller do
     end
   end
 
-  describe 'POST #destroy' do
+  describe 'DELETE #destroy' do
     before do
       boat = create(:boat)
       @old_amount_boat = Boat.count
@@ -99,6 +99,24 @@ RSpec.describe BoatsController, type: :controller do
     it "Destroyed successfully" do
       expect(Boat.count).to eq(@old_amount_boat - 1)
       flash[:success].should include(I18n.t("boats.destroy.success"))
+    end
+  end
+
+  describe 'GET #show' do
+    before do
+      @boat = create(:boat)
+      3.times do |i|
+        @boat.goods.create(name: "goods #{i}", quantity: i + 1)
+      end
+      get :show, id: @boat.id
+    end
+
+    it "render the 'show' template" do
+      expect(response).to render_template(:show)
+    end
+
+    it "get goods of boat" do
+      expect(@boat.goods.count).to eq(3)
     end
   end
 end

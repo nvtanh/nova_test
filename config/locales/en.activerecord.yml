@@ -3,6 +3,7 @@ en:
     models:
       user: "User"
       boat: "Boat"
+      good: "Goods"
 
     attributes:
       user:
@@ -12,3 +13,6 @@ en:
         name: "Name"
         year: "Year"
         image: "Image"
+      good:
+        name: "Name"
+        quantity: "Quantity"
