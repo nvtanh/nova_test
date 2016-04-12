@@ -9,6 +9,10 @@ class Boat < ActiveRecord::Base
     greater_than_or_equal_to: 0 }
   validates_attachment :image, content_type: { content_type: /\Aimage\/.*\Z/ }
 
+  def owner_by?(user)
+    self.user == user
+  end
+
   private
   def set_image_url
     "/images/users/#{self.user_id}/boat/:basename-#{self.id}.:extension"
