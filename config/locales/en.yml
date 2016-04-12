@@ -22,3 +22,7 @@
 en:
   dictionary:
     question_destroy: "Are you sure?"
+  errors:
+    messages:
+      permission_invalid: "Permission invalid !"
+      record_not_found: "Not found "

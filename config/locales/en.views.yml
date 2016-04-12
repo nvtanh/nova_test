@@ -26,6 +26,7 @@ en:
       boat_heading: "Boat infor"
       goods_heading: "List goods"
       option_label: *option_label
+      add_goods_label: "Add goods"
   goods:
     good:
       delete: *delete

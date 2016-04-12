@@ -26,7 +26,7 @@ RSpec.describe BoatsController, type: :controller do
     context 'with valid attributes' do
       before do
         @old_amount_boat = Boat.count
-        post :create, boat: attributes_for(:boat)
+        post :create, boat: attributes_for(:boat, user: subject.current_user)
       end
 
       it "create a boat" do
@@ -41,7 +41,7 @@ RSpec.describe BoatsController, type: :controller do
     context 'with invalid params' do
       before do
         @old_amount_boat = Boat.count
-        post :create, boat: attributes_for(:boat, name: nil)
+        post :create, boat: attributes_for(:boat, user: subject.current_user, name: nil)
       end
 
       it "don't create a boat" do
@@ -57,7 +57,7 @@ RSpec.describe BoatsController, type: :controller do
   describe 'PUT #update' do
     context 'with valid attributes' do
       before do
-        @boat = create(:boat)
+        @boat = create(:boat, user: subject.current_user)
         put :update, id: @boat.id, boat: attributes_for(:boat, name: "new boat")
         @boat.reload
       end
@@ -74,7 +74,7 @@ RSpec.describe BoatsController, type: :controller do
 
     context 'with invalid params' do
       before do
-        @boat = create(:boat, name: "old boat")
+        @boat = create(:boat, user: subject.current_user, name: "old boat")
         post :update, id: @boat.id, boat: attributes_for(:boat, name: nil)
         @boat.reload
       end
@@ -91,7 +91,7 @@ RSpec.describe BoatsController, type: :controller do
 
   describe 'DELETE #destroy' do
     before do
-      boat = create(:boat)
+      boat = create(:boat, user: subject.current_user)
       @old_amount_boat = Boat.count
       delete :destroy, id: boat.id
     end
@@ -104,7 +104,7 @@ RSpec.describe BoatsController, type: :controller do
 
   describe 'GET #show' do
     before do
-      @boat = create(:boat)
+      @boat = create(:boat, user: subject.current_user)
       3.times do |i|
         @boat.goods.create(name: "goods #{i}", quantity: i + 1)
       end
@@ -117,6 +117,22 @@ RSpec.describe BoatsController, type: :controller do
 
     it "get goods of boat" do
       expect(@boat.goods.count).to eq(3)
+    end
+  end
+
+  context '#check_authorization' do
+    it 'permission invalid' do
+      orther_user = create(:user)
+      boat = create(:boat, user: orther_user)
+      get :show, id: boat.id
+      expect(response).to redirect_to root_path
+      flash[:errors].should include(I18n.t("errors.messages.permission_invalid"))
+    end
+
+    it 'permission valid' do
+      boat = create(:boat, user: subject.current_user)
+      get :show, id: boat.id
+      expect(response).to render_template(:show)
     end
   end
 end

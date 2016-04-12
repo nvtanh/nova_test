@@ -46,7 +46,7 @@ class GoodsController < ApplicationController
   end
 
   def load_instance
-    @good = Good.find(params[:id])
+    @good = @boat.goods.find(params[:id])
   end
 
   def create_instance

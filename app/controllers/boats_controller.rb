@@ -2,6 +2,7 @@ class BoatsController < ApplicationController
   before_action :load_instance, only: [:show, :edit, :update, :destroy]
   before_action :create_instance, only: [:new, :create]
   before_action :set_params, only: [:create, :update]
+  before_action :check_authorization, only: [:show, :edit, :update, :destroy]
 
   def index
     @boats = current_user.boats.page(params[:page]).per(Settings.per_page.boat)
@@ -62,5 +63,12 @@ class BoatsController < ApplicationController
 
   def set_params
     @boat.assign_attributes(boat_params)
+  end
+
+  def check_authorization
+    unless @boat.owner_by?(current_user)
+      flash[:errors] = [I18n.t("errors.messages.permission_invalid")]
+      redirect_to root_path
+    end
   end
 end

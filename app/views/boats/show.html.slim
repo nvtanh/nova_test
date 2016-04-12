@@ -17,15 +17,15 @@
               td= @boat.year
             tr
               th= Boat.h :image
-              td= image_tag @boat.image.url
+              td= image_tag @boat.image.url, class: "size-img-medium"
 
 .row
   .col-lg-12
     .panel.panel-default
       .panel-heading
-        = t ".goods_heading"
-        .pull-right
-          = link_to "new goods", new_boat_good_path(@boat), class: "btn btn-sm btn-primary"
+        div
+          span.mar-right-5= t ".goods_heading"
+          = link_to t(".add_goods_label"), new_boat_good_path(@boat), class: "btn btn-sm btn-primary"
       .panel-body
         .table-responsive
           table.table
